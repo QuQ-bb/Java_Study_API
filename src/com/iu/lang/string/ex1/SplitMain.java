@@ -6,16 +6,17 @@ public class SplitMain {
 		// TODO Auto-generated method stub
 		
 		WorkerService ws = new WorkerService();
+		ws.init();
 		
 		WorkerView wv = new WorkerView();
 		WorkerDTO[] workerDTOs = ws.init();
-		//wv.init(workerDTOs);
+		wv.init(workerDTOs);
 		
-		int num=10;
+//		int num=10;
 		
 		//String.valueOf(); //위에 있는 int num을 문자열 10으로 바꿔주세요
-		String str =String.valueOf(num);
-		System.out.println(str);	//10 숫자 10이 아니라 문자열 10
+//		String str =String.valueOf(num);
+//		System.out.println(str);	//10 숫자 10이 아니라 문자열 10
 	}
 
 }

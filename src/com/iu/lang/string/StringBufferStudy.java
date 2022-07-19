@@ -18,6 +18,8 @@ public class StringBufferStudy {
 		sb.append(str2);
 		sb.append(10);
 		System.out.println(sb);
+//		
+		
 		
 		//String result = sb;	//오류남 왜?  result랑 sb랑 데이터타입이 다르기때문이다
 		//참조변수는 원래 객체의 주소값을 갖는것 
