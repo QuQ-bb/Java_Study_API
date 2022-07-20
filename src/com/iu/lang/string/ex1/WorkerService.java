@@ -1,9 +1,12 @@
 package com.iu.lang.string.ex1;
 
+import java.util.StringTokenizer;
+
 public class WorkerService {
 
 	//private String info;
 	private StringBuffer sb;
+	private StringTokenizer st;
 	
 	public WorkerService() {
 		//늘어나도 줄어들수도 있다
@@ -51,29 +54,40 @@ public class WorkerService {
 		//dto =infos;
 		System.out.println("강사님 코드==================================================================================================");
 //		
+		
 		String info = sb.toString();
 		String newInfo= info.replace(",", "-");
-		String[] infos = newInfo.split("-");		for(String str : infos) {
-			System.out.println(str);
-		}
-		WorkerDTO[] workerDTOs = new WorkerDTO[infos.length/4];
+		st= new StringTokenizer(newInfo, "-");
 		
-		for(int i=0; i<infos.length; i++) {
-			
+		WorkerDTO[] workerDTOs = new WorkerDTO[st.countTokens()/4];
+		
+		int index=0;
+		while(st.hasMoreTokens()) {
 			WorkerDTO workerDTO = new WorkerDTO();
-			workerDTOs[i/4] = workerDTO;
-			workerDTO.setName(infos[i].trim());
-			workerDTO.setDepartment(infos[++i].trim());
-			workerDTO.setJob(infos[++i].trim());
-			workerDTO.setPhone(infos[++i].trim());
+			workerDTO.setName(st.nextToken());
+			workerDTO.setDepartment(st.nextToken());
+			workerDTO.setJob(st.nextToken());
+			workerDTO.setPhone(st.nextToken());
+			workerDTOs[index] =workerDTO;
+			index++;
 		}
 		
 		
+//		String[] infos = newInfo.split("-");
+//		WorkerDTO[] workerDTOs = new WorkerDTO[infos.length/4];
+//		
+//		for(int i=0; i<infos.length; i++) {
+//			
+//			WorkerDTO workerDTO = new WorkerDTO();
+//			workerDTOs[i/4] = workerDTO;
+//			workerDTO.setName(infos[i].trim());
+//			workerDTO.setDepartment(infos[++i].trim());
+//			workerDTO.setJob(infos[++i].trim());
+//			workerDTO.setPhone(infos[++i].trim());
+//		}
 		
-//		System.out.println("이름= "+workerDTO.getName());
-//		System.out.println("부서= "+workerDTO.getDepartment());
-//		System.out.println("직급= "+workerDTO.getJob());
-//		System.out.println("번호= "+workerDTO.getPhone());
+		
+		
 		return workerDTOs;
 		
 		
