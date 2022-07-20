@@ -6,7 +6,7 @@ public class SplitMain {
 		// TODO Auto-generated method stub
 		
 		WorkerService ws = new WorkerService();
-		ws.init();
+		//ws.init();
 		
 		WorkerView wv = new WorkerView();
 		WorkerDTO[] workerDTOs = ws.init();
