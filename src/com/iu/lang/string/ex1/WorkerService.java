@@ -58,7 +58,6 @@ public class WorkerService {
 		String info = sb.toString();
 		String newInfo= info.replace(",", "-");
 		st= new StringTokenizer(newInfo, "-");
-		
 		WorkerDTO[] workerDTOs = new WorkerDTO[st.countTokens()/4];
 		
 		int index=0;

@@ -57,7 +57,7 @@ public class WeatherService {
 			
 			
 		}
-	public void add(ArrayList<CityDTO> al) {
+	public boolean add(ArrayList<CityDTO> al) {
 		//ADD메서드 CITY정보를 입력받아서 추가 -ARRAYlIST에
 		CityDTO cityDTO = new CityDTO();
 		
@@ -70,37 +70,59 @@ public class WeatherService {
 		System.out.println("추가할 도시의 날씨를 입력해주세요.");
 		cityDTO.setStatus(scan.next());
 		
-		al.add(cityDTO);
+		return al.add(cityDTO);
 		
 	}
-	public void remove(ArrayList<CityDTO> al) {
+	public boolean remove(ArrayList<CityDTO> al) {
 		//remove메서드 도시명을 입력받아서 리스트에서 삭제
 		System.out.println("삭제할 도시명을 입력해주세요.");
 		//이것두 검색이랑 똑같은데 우째함? ㅇㅅㅇ
 		//String으로 받아서 어떻게 알수있을까?ㅇㅅㅇ?
 		//String 으로 입력받아서 호출해야돼 어케하지 
 		// cityDTO.getName
-		String del = scan.next();
+		String del = scan.next().toLowerCase();
+		boolean recheck =false;
 		
 		for(int i=0; i<al.size(); i++) {
-			
+			if(del.equals(al.get(i).getName().toLowerCase())) {
+				al.remove(i);
+				recheck =!recheck;
+				break;
+			}
 		}
+		return recheck;
 		
+		//향상 for문
+//		for(CityDTO cityDTO : al) {
+//			if(del.equals(cityDTO.getName())) {
+//				al.remove(cityDTO);
+//				break;
+//			}//if
+//		}//for
 		
-		
-	}
+	}//add
 	public CityDTO find(ArrayList<CityDTO> al) {
 		//find메서드 도시명을 입력받아서 리스트에서 검색 리턴 없으면 없다고 시키기
 		CityDTO cityDTO = new CityDTO();
 		System.out.println("검색할 도시명을 입력해주세요.");
 		//도시명 받아서 String이잖아 일단 대,소문자 전부 가능하게 하기
 		String search = scan.next();
-		if(search == cityDTO.getName()) {
-			//해당 도시의 정보를 가져온다
-			System.out.println();
-		}
+		for(int i=0; i<al.size(); i++) {
+			if(search.toLowerCase().equals(al.get(i).getName().toLowerCase())){
+				cityDTO = al.get(i);
+				break;
+			}//if
+		}//for
+		
+//		//향상된 for
+//		for(CityDTO cityDTO2: al) {
+//			if(search.equals(cityDTO2.getName())) {
+//				cityDTO = cityDTO2;
+//				break;
+//			}//if
+//		}//for
 		
 		return cityDTO;
-	}
+	}//find
 
 }

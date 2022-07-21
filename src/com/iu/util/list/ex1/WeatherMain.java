@@ -19,20 +19,20 @@ public class WeatherMain {
 			//	m- > wc -> ws
 			//	m -> wc -> wv
 		WeatherController wc = new WeatherController();
-		//wc.start();
+		wc.start();
 		
 		WeatherService ws = new WeatherService();
 //		 ws.init(al);
 		
 		WeatherView wv = new WeatherView();
 //		wv.view(al);
-		wv.view("Test");
-		
-		CityDTO cityDTO2 = new CityDTO();
-		
-		al.add(cityDTO);
-		al.add(cityDTO2);
-		wv.view(al);
+//		wv.view("Test");
+//		
+//		CityDTO cityDTO2 = new CityDTO();
+//		
+//		al.add(cityDTO);
+//		al.add(cityDTO2);
+//		wv.view(al);
 	}
 
 }
