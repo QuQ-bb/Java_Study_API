@@ -63,23 +63,29 @@ public class StudentDAO {
 		//1을 리턴 : 정상적인 성공
 		//0을 리턴 : 예외가 발생 했을 경우
 		File file = new File("C:\\study\\studentData.txt");
+		FileWriter fw =null;
+		int result =1;
 		
 		try {
 			FileReader fr = new FileReader(file);
-			FileWriter fw = new FileWriter(file,true);
-			
-			
-//			for(int i=0; i<al.size(); i++) {
-//				fw.write(al.get(i).setName());
-//				fw.write(al.get(i).setNum());
-//				
-//				fw.flush();
-//			}
-			return 1;
+			fw = new FileWriter(file,true);
+			fw.write("\r\n");
+			for(StudentDTO studentDTO : al) {
+				StringBuffer stringBuffer = new StringBuffer();
+				stringBuffer.append(studentDTO.getName()+",");
+//				stringBuffer.append(",");	//이렇게도 가능
+				stringBuffer.append(studentDTO.getNum()+",");
+				stringBuffer.append(studentDTO.getKor()+",");
+				stringBuffer.append(studentDTO.getEng()+",");
+				stringBuffer.append(studentDTO.getMath()+"\r\n");
+				fw.write(stringBuffer.toString());
+			}
+			fw.flush();
 		}catch(Exception e){
+		StudentDTO studentDTO = new StudentDTO();
 		
-			return 0;
 		}
+		return result;
 		
 	}
 	
@@ -87,7 +93,7 @@ public class StudentDAO {
 	//1. getList 메서드
 	//	studentData 파일의 내용을 읽어서 작업
 	// list이용해서 return하기
-	public void getList() throws Exception{
+	public ArrayList<StudentDTO> getList() throws Exception{
 		ArrayList<StudentDTO> al = new ArrayList();
 		File file = new File("C:\\study\\studentData.txt");
 		FileReader fr = new FileReader(file);
@@ -118,23 +124,24 @@ public class StudentDAO {
 			studentDTO.setKor(Integer.parseInt(stt.nextToken()));
 			studentDTO.setEng(Integer.parseInt(stt.nextToken()));
 			studentDTO.setMath(Integer.parseInt(stt.nextToken()));
-//			studentDTO.setTotal();
-//			studentDTO.setAvg();
+			studentDTO.setTotal(studentDTO.getKor()+studentDTO.getEng()+studentDTO.getMath());
+			studentDTO.setAvg(studentDTO.getTotal()/3.0);
 			al.add(studentDTO);
 			
 //			return al.add(studentDTO);
 		}//if
-		for(int i=0; i<al.size(); i++) {
-			System.out.println("이름= "+al.get(i).getName());
-			System.out.println("번호= "+al.get(i).getNum());
-			System.out.println("국어= "+al.get(i).getKor());
-			System.out.println("영어= "+al.get(i).getEng());
-			System.out.println("수학= "+al.get(i).getMath());
-			System.out.println("총점= "+al.get(i).getTotal());
-			System.out.println("평균= "+al.get(i).getAvg());
-			System.out.println("========================");
-		}//for
+//		for(int i=0; i<al.size(); i++) {
+//			System.out.println("이름= "+al.get(i).getName());
+//			System.out.println("번호= "+al.get(i).getNum());
+//			System.out.println("국어= "+al.get(i).getKor());
+//			System.out.println("영어= "+al.get(i).getEng());
+//			System.out.println("수학= "+al.get(i).getMath());
+//			System.out.println("총점= "+al.get(i).getTotal());
+//			System.out.println("평균= "+al.get(i).getAvg());
+//			System.out.println("========================");
+//		}//for
 	  }//while
+		return al;
 		
 	}
 }//getList

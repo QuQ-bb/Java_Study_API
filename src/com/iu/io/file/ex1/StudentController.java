@@ -30,7 +30,7 @@ public class StudentController {
 			switch(select) {
 			case 1:
 				//학생정보출력
-				dao.getList();
+				sw.view(dao.getList()); ;
 				break;
 			case 2:
 				
