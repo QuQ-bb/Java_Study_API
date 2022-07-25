@@ -44,14 +44,14 @@ public class StudentDTO {
 	public int getTotal() {
 		return total;
 	}
-	public void setTotal() {
-		this.total = this.kor+this.eng+this.math;
+	public void setTotal(int total) {
+		this.total = total;
 	}
 	public double getAvg() {
 		return avg;
 	}
-	public void setAvg() {
-		this.avg = this.total/3.0;
+	public void setAvg(double avg) {
+		this.avg = avg;
 	}
 	
 

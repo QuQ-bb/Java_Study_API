@@ -1,5 +1,6 @@
 package com.iu.io.file.ex1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentController {
@@ -14,31 +15,36 @@ public class StudentController {
 	Scanner scan = new Scanner(System.in);
 	StudentDAO dao = new StudentDAO();
 	StudentView sw = new StudentView();
+	StudentService ss = new StudentService();
+	ArrayList<StudentDTO> al = new ArrayList<>();
 	public void start()throws Exception {
-		System.out.println("1. 학생정보출력");
-		System.out.println("2. 학생정보검색");
-		System.out.println("3. 학생정보추가");
-		System.out.println("4. 학생정보삭제");
-		System.out.println("5. 학생정보백업");
-		System.out.println("6. 종료");
-		int select = scan.nextInt();
 		boolean check = true;
 		while(check) {
+			System.out.println("1. 학생정보출력");
+			System.out.println("2. 학생정보검색");
+			System.out.println("3. 학생정보추가");
+			System.out.println("4. 학생정보삭제");
+			System.out.println("5. 학생정보백업");
+			System.out.println("6. 종료");
+			int select = scan.nextInt();
 			switch(select) {
 			case 1:
 				//학생정보출력
-//				sw.view(dao.getList()); 
+				dao.getList();
 				break;
 			case 2:
+				
 				break;
 			case 3:
 				break;
 			case 4:
 				break;
 			case 5:
+				dao.setList(al);
 				break;
 			case 6:
-				check=!check;
+				System.out.println("프로그램 종료");
+				check = !check;
 				break;
 			}
 		}
